@@ -1,6 +1,6 @@
-import DropdownMenu from "../../components/DropdownMenu";
+import DropdownMenu from "../../components/DropdownMenu/dropdownmenu";
 import styled from "styled-components";
-import backHousingMobile from "../../assets/back-housing-mobile.jpg"
+import backHousing from "../../assets/back-housing.jpg"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
@@ -20,7 +20,7 @@ const StyledHousing = styled.div`
         width: auto;
         height: 255px;
         position: relative;
-        margin: 0 20px 35px 20px;
+        margin: 0 80px 35px 80px;
         & img {
             width: 100%;
             height: 100%;
@@ -71,10 +71,17 @@ const StyledHousing = styled.div`
                 text-align: right;
                 margin-right: 5px;
             }  
-
         }
-        
-
+    }
+    & .housing-content {
+        @media (min-width: 768px) {
+            margin: 0 60px;
+        }
+    }
+    & .dropdown-housing {
+        @media (min-width: 768px) {
+            display: flex;
+        }
     }
     
 `
@@ -83,26 +90,28 @@ function Housing() {
     return (
         <StyledHousing>
             <div className="img-housing">   
-                <div className="chevron-left">
+                {/* <div className="chevron-left">
                     <FontAwesomeIcon icon={faChevronLeft} />
-                </div>
-                <img src={backHousingMobile} alt="" />   
-                <div className="chevron-right">
+                </div> */}
+                <img src={backHousing} alt="" />   
+                {/* <div className="chevron-right">
                     <FontAwesomeIcon icon={faChevronRight} />
+                </div> */}
+            </div>
+            <div className="housing-content">
+                <h1>Paris center, on the romantic Canal Saint-Martin</h1>
+                <p>Paris, Île-de-France</p>
+                <div className="filters">
+                    <div>Cozy</div>
+                    <div>Canal</div>
+                    <div>Paris 10</div>
                 </div>
-            </div>
-            <h1>Paris center, on the romantic Canal Saint-Martin</h1>
-            <p>Paris, Île-de-France</p>
-            <div className="filters">
-                <div>Cozy</div>
-                <div>Canal</div>
-                <div>Paris 10</div>
-            </div>
-            <div className="rating-and-name">
-                <i></i>
-                <div className="name-and-picture">
-                    <p>Alexandre Dumas</p>
-                    <div className="picture"></div>
+                <div className="rating-and-name">
+                    <i></i>
+                    <div className="name-and-picture">
+                        <p>Alexandre Dumas</p>
+                        <div className="picture"></div>
+                    </div>
                 </div>
             </div>
             <div className="dropdown-housing">

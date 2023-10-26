@@ -1,5 +1,5 @@
-import Banner from "../../components/Banner";
-import DropdownMenu from "../../components/DropdownMenu";
+import Banner from "../../components/Banner/banner";
+import DropdownMenu from "../../components/DropdownMenu/dropdownmenu";
 
 function About() {
     return (

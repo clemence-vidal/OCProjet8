@@ -1,20 +1,20 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Home from './pages/Home';
-import About from './pages/About';
-import Housing from './pages/Housing';
-import Error from './pages/Error';
 // import Survey from './pages/Survey';
-import Header from './components/Header';
 // import Banner from './components/Banner';
 // import Card from './components/Card';
-import Footer from './components/Footer';
 // import Error from './pages/Error';
 // import Results from './pages/Results';
 // import Freelances from './pages/Freelances';
 import { createGlobalStyle } from 'styled-components';
 // import styled from 'styled-components';
+import Header from './components/Header/header';
+import Home from './pages/Home/home';
+import About from './pages/About/about';
+import Housing from './pages/Housing/housing';
+import Error from './pages/Error/error';
+import Footer from './components/Footer/footer';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -29,8 +29,8 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     max-width: 1440px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
   }
   @media (min-width: 768px) {
     body {
@@ -39,8 +39,9 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
+const root = createRoot(document.getElementById('root'));
 
-ReactDOM.render(
+root.render(
   <React.StrictMode>
     <Router>
       <GlobalStyle />      
@@ -55,5 +56,4 @@ ReactDOM.render(
       <Footer />  
     </Router>    
   </React.StrictMode>,
-  document.getElementById('root')
 );

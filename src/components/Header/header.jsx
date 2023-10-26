@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 import logo from "../../assets/logo.svg";
-// import "./styles.scss"
-// import "./style.css"
+// import "./header.scss"
+// import "./header.css"
 
 // const StyledLink = styled(Link);
 const StyledImage = styled.img`
@@ -22,7 +22,7 @@ const StyledNav = styled.nav`
     font-size: 12px;
 
     @media (min-width: 768px) { 
-    margin: 30px 65px;
+    margin: 20px 65px;
     }
 `
 const StyledLink = styled(Link)`
