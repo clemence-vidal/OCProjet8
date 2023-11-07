@@ -1,124 +1,80 @@
 import DropdownMenu from "../../components/DropdownMenu/dropdownmenu";
-import styled from "styled-components";
-import backHousing from "../../assets/back-housing.jpg"
+import "./housing.scss";
+// import backHousing from "../../assets/back-housing.jpg"
+// import { useLocation } from "react-router-dom";
+import { useCards } from "../Home/home";
+import { useState, useEffect } from "react";
+import { useParams, useNavigate  } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { LogementsServices } from "../../services/logementsServices";
 
-
-const StyledHousing = styled.div`
-    color: #FF6060;
-    & h1, p {
-        font-family: Montserrat, sans-serif; 
-        margin-left: 20px; 
-    }  
-    & h1 {        
-        font-size: 18px;
-        margin: 10px 20px;
-    }
-    & .img-housing {        
-        width: auto;
-        height: 255px;
-        position: relative;
-        margin: 0 80px 35px 80px;
-        & img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            border-radius: 10px;
-        }
-        & .chevron-left, .chevron-right {
-            position: relative;
-            color: black;
-            font-size: 20px;
-        }
-        & .chevron-right {
-            right: -100px;
-        }
-    }
-    & .filters {
-        display: flex;
-        margin: 10px 0;   
-        margin-left: 20px;      
-        & div {
-        font-size: 12px;
-        width: 80px;
-        margin-right: 10px;
-        border: 1px solid #FF6060;
-        border-radius: 6px;
-        text-align: center;
-        background-color: #FF6060;
-        color: white;
-        }
-    }
-    & .rating-and-name {
-        display: flex;
-        justify-content: flex-end;
-        & .name-and-picture {
-            display: flex;
-            margin-bottom: 10px;
-            & .picture {
-            width: 40px;
-            height: 40px;
-            border: 1px solid gray;
-            border-radius: 50px;
-            margin-right: 20px;
-            background-color: gray;
-            } 
-            & p {
-                width: 100px;
-                text-align: right;
-                margin-right: 5px;
-            }  
-        }
-    }
-    & .housing-content {
-        @media (min-width: 768px) {
-            margin: 0 60px;
-        }
-    }
-    & .dropdown-housing {
-        @media (min-width: 768px) {
-            display: flex;
-        }
-    }
-    
-`
 
 function Housing() {
+    const [housingDetails, setHousingDetails] = useState();
+    const { id } = useParams();
+    const navigate = useNavigate();
+      
+    // Récupérer l'id pour savoir sur quel élément on est
+    // aller chercher l'ensemble des logements depuis .json
+    // on va faire une boucle pour trouver le bon élément et 
+    // comparer l'id depuis celui qu'on vient de récupérer
+    // une fois le logement trouver, on le retourne
+    // setHousingDetails.
+    // si aucun logement ne match, redirection page erreur ou return error
+    
+    useEffect(() => {
+        console.log(id);
+        const logementsServices = new LogementsServices();
+        logementsServices.getLogementsById(id) 
+        .then((data) => {
+            console.log(data);
+        })
+      }, [id]);
+    
+    
+    // console.log(housingList);
     return (
-        <StyledHousing>
-            <div className="img-housing">   
-                {/* <div className="chevron-left">
-                    <FontAwesomeIcon icon={faChevronLeft} />
-                </div> */}
-                <img src={backHousing} alt="" />   
-                {/* <div className="chevron-right">
-                    <FontAwesomeIcon icon={faChevronRight} />
-                </div> */}
-            </div>
-            <div className="housing-content">
-                <h1>Paris center, on the romantic Canal Saint-Martin</h1>
-                <p>Paris, Île-de-France</p>
-                <div className="filters">
-                    <div>Cozy</div>
-                    <div>Canal</div>
-                    <div>Paris 10</div>
-                </div>
-                <div className="rating-and-name">
-                    <i></i>
-                    <div className="name-and-picture">
-                        <p>Alexandre Dumas</p>
-                        <div className="picture"></div>
-                    </div>
-                </div>
-            </div>
-            <div className="dropdown-housing">
-                <DropdownMenu />
-                <DropdownMenu />
-            </div>
-        </StyledHousing>
+        <div></div>
+        // <div className="housing">
+        //     <div className="img-housing">   
+        //         <div className="chevron-left">
+        //             <FontAwesomeIcon icon={faChevronLeft} />
+        //         </div>
+        //         <img src="" alt="" />   
+        //         <div className="chevron-right">
+        //             <FontAwesomeIcon icon={faChevronRight} />
+        //         </div>
+        //     </div>
+        //     <div className="housing-content">
+        //         <h1>Paris center, on the romantic Canal Saint-Martin</h1>
+        //         <p>Paris, Île-de-France</p>
+        //         <div className="filters">
+        //             <div>Cozy</div>
+        //             <div>Canal</div>
+        //             <div>Paris 10</div>
+        //         </div>
+        //         <div className="rating-and-name">
+        //             <div className="rating">
+        //                 <FontAwesomeIcon icon={faStar} />
+        //                 <FontAwesomeIcon icon={faStar} />
+        //                 <FontAwesomeIcon icon={faStar} className="empty-stars" />
+        //                 <FontAwesomeIcon icon={faStar} />
+        //                 <FontAwesomeIcon icon={faStar} />
+        //             </div>
+        //             <div className="name-and-picture">
+        //                 <p>Alexandre Dumas</p>
+        //                 <div className="picture"></div>
+        //             </div>
+        //         </div>
+        //     </div>
+        //     <div className="dropdown-housing">
+        //         <DropdownMenu />
+        //         <DropdownMenu />
+        //     </div>
+        // </div>
     )
 }
 

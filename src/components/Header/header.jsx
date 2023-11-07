@@ -1,72 +1,18 @@
 import { Link } from "react-router-dom";
-import styled, { css } from "styled-components";
 import logo from "../../assets/logo.svg";
-// import "./header.scss"
-// import "./header.css"
-
-// const StyledLink = styled(Link);
-const StyledImage = styled.img`
-    width: 125px;
-    height: 40px;    
-    margin: 20px; 
-
-    @media (min-width: 768px) {
-        width: 210px;
-        height: 68px;
-    }
-`
-const StyledNav = styled.nav`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 12px;
-
-    @media (min-width: 768px) { 
-    margin: 20px 65px;
-    }
-`
-const StyledLink = styled(Link)`
-    color: #FF6060;    
-    text-transform: uppercase;
-
-    ${props =>
-    props.styleOne && 
-    css`
-        text-decoration: none;
-    `}
-
-    ${props =>
-    props.styleTwo && 
-    css`
-        text-decoration: none;
-        margin-left: 10px;
-        margin-right: 20px;
-    `}
-
-    @media (min-width: 768px) {
-        text-transform: none;
-        font-size: 24px;
-
-        ${props =>
-        props.styleTwo && 
-        css`
-            margin-left: 50px;
-    `}
-    }
-`;
-
+import "./header.scss";
 
 function Header() {
     return (
-        <StyledNav>
+        <nav className="header">
             <div>
-                <StyledImage src={logo} alt="logo-site" />
+                <img src={logo} alt="logo-site" />
             </div>
             <div>
-                <StyledLink to="/home" styleOne>Accueil</StyledLink>
-                <StyledLink to="/about" styleTwo>A Propos</StyledLink>
+                <Link to="/home" className="style-one" >Accueil</Link>
+                <Link to="/about" className="style-two">A Propos</Link>
             </div>
-        </StyledNav>
+        </nav>
     )
 }
 

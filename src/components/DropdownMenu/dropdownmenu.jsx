@@ -1,49 +1,51 @@
-import React from 'react';
-import styled from "styled-components";
+import React, { useState, useEffect } from 'react';
+import "./dropdownmenu.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
-const StyledMenu = styled.div`
-    margin: 0 20px 15px 20px;
-    & select {
-        padding: 5px 5px;
-        color: white;
-        border: 1px solid #FF6060;
-        border-radius: 6px;
-        background-color: #FF6060;
-        width: 100%;
-        appearance: none;
-    }
-    & .icon-chevron {
-        color : green;
-        position: absolute;
-        right: 20px;
-    }
 
-    @media (min-width: 768px) {
-        margin: 30px 200px;
-        & select {
-            padding: 0 20px;
-            height: 50px;
-            font-size: 20px;
-        }
-    }
-`
 
-function DropdownMenu() {
+function DropdownMenu(props) {
+    const [data, setData] = useState([]);
+    const [isCollapsed, setIsCollapsed] = useState(true);
+    const toggleCollapse = () => {
+        setIsCollapsed(!isCollapsed);
+    }
+    
+    useEffect(() => {
+        fetch("datas/logements.json")
+        .then((response) => {
+          if (!response.ok) {
+            console.log("Quelque chose s'est mal passé");
+          }
+          return response.json();
+        })
+        .then((json) => {
+          setData(json);
+          console.log(data.description);
+        })
+      }, []);
+
     return (
-        <StyledMenu>
-            <label for="choix"></label>
-            <select id="choix">
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
-            </select>
-            <div className="icon-chevron">                
-                <FontAwesomeIcon icon={faChevronUp} />
-            </div>
-        </StyledMenu>
-    )
+        <div className='dropdown-menu'>
+      <button type='button' className="collapsible" onClick={toggleCollapse}>
+        Equipement/Description/etc
+        <FontAwesomeIcon icon={faChevronUp} className={`chevron-icon ${isCollapsed ? 'down' : 'up'}`} />
+      </button>
+      <div className={`content-collapsible ${isCollapsed ? "collapsed" : ""}`}>
+        {data.map((item, index) => (
+          <div key={index}>
+            <p>{item.description}</p>
+            <ul>
+              {item.tableau && item.tableau.map((element, subIndex) => (
+                <li key={subIndex}>{element}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default DropdownMenu;

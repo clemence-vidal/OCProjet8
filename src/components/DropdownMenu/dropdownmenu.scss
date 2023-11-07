@@ -1,0 +1,42 @@
+.dropdown-menu {
+    button {
+        cursor: pointer;
+        color: white;
+        border: 1px #FF6060 solid;
+        border-radius: 5px;
+        background-color: #FF6060;
+        width: calc(100% - 40px);
+        padding: 7px;
+        display: flex;
+        margin: 20px 20px 0 20px;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+    .collapsed {
+        display: none;
+    }
+    .content-collapsible {
+        background-color: #F6F6F6;
+        color: #FF6060;
+        margin: 0 20px;
+        padding: 20px;
+    }
+    .chevron-icon {
+        transition: transform 0.3s ease;
+    }
+    .chevron-icon.up {        
+        transform: rotate(-0.5turn)
+    }
+      
+}
+
+@media (min-width: 768px) {
+    .dropdown-housing {
+        display: flex;
+        justify-content: space-around;
+        .dropdown-menu {
+            width: 55%;
+        }
+    }
+}

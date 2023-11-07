@@ -1,14 +1,17 @@
 import Banner from "../../components/Banner/banner";
 import DropdownMenu from "../../components/DropdownMenu/dropdownmenu";
+import "./about.scss";
 
 function About() {
     return (
-        <div>
+        <div className="about-content">
             <Banner />
-            <DropdownMenu />
-            <DropdownMenu />
-            <DropdownMenu />
-            <DropdownMenu />
+            <div className="about-dropdowns">
+                <DropdownMenu />
+                <DropdownMenu />
+                <DropdownMenu />
+                <DropdownMenu />
+            </div>
         </div>
     )
 
