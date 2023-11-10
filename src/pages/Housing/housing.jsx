@@ -10,71 +10,73 @@ import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { LogementsServices } from "../../services/logementsServices";
-
+import Carousel from "../../components/carousel/carousel";
 
 function Housing() {
     const [housingDetails, setHousingDetails] = useState();
     const { id } = useParams();
-    const navigate = useNavigate();
-      
-    // Récupérer l'id pour savoir sur quel élément on est
-    // aller chercher l'ensemble des logements depuis .json
-    // on va faire une boucle pour trouver le bon élément et 
-    // comparer l'id depuis celui qu'on vient de récupérer
-    // une fois le logement trouver, on le retourne
-    // setHousingDetails.
-    // si aucun logement ne match, redirection page erreur ou return error
-    
+
     useEffect(() => {
-        console.log(id);
         const logementsServices = new LogementsServices();
         logementsServices.getLogementsById(id) 
-        .then((data) => {
-            console.log(data);
-        })
+        .then((json) => {
+            setHousingDetails(json);
+        })        
       }, [id]);
+      
+      function ratingHousing(rating) {
+        const stars = [];
+        for (let i = 0; i < 5; i++) {
+            stars.push(
+                <FontAwesomeIcon key={i} icon={faStar} className={i < rating ? "" : "empty-stars"} />
+            );
+        }
+        return stars;
+      }
     
-    
-    // console.log(housingList);
     return (
-        <div></div>
-        // <div className="housing">
-        //     <div className="img-housing">   
-        //         <div className="chevron-left">
-        //             <FontAwesomeIcon icon={faChevronLeft} />
-        //         </div>
-        //         <img src="" alt="" />   
-        //         <div className="chevron-right">
-        //             <FontAwesomeIcon icon={faChevronRight} />
-        //         </div>
-        //     </div>
-        //     <div className="housing-content">
-        //         <h1>Paris center, on the romantic Canal Saint-Martin</h1>
-        //         <p>Paris, Île-de-France</p>
-        //         <div className="filters">
-        //             <div>Cozy</div>
-        //             <div>Canal</div>
-        //             <div>Paris 10</div>
-        //         </div>
-        //         <div className="rating-and-name">
-        //             <div className="rating">
-        //                 <FontAwesomeIcon icon={faStar} />
-        //                 <FontAwesomeIcon icon={faStar} />
-        //                 <FontAwesomeIcon icon={faStar} className="empty-stars" />
-        //                 <FontAwesomeIcon icon={faStar} />
-        //                 <FontAwesomeIcon icon={faStar} />
-        //             </div>
-        //             <div className="name-and-picture">
-        //                 <p>Alexandre Dumas</p>
-        //                 <div className="picture"></div>
-        //             </div>
-        //         </div>
-        //     </div>
-        //     <div className="dropdown-housing">
-        //         <DropdownMenu />
-        //         <DropdownMenu />
-        //     </div>
-        // </div>
+        <div className="housing">
+            {housingDetails ? (
+                <div>
+                    <div className="img-housing">
+                        <Carousel images={housingDetails.pictures} />
+                    </div>
+                    <div className="housing-content">
+                        <h1>{housingDetails.title}</h1>
+                        <p>{housingDetails.location}</p>
+                        <div className="filters">
+                            {housingDetails.tags.map((filters) => (
+                                <p className="p-filters">{filters}</p>
+                            ))}
+                        </div>
+                        <div className="rating-and-name">
+                            <div className="rating">
+                                {ratingHousing(housingDetails.rating)}
+                            </div>
+                            <div className="name-and-picture">
+                                <p>{housingDetails.host.name}</p>
+                                <div className="picture">
+                                    <img src={housingDetails.host.picture} alt="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="dropdown-housing">
+                        <DropdownMenu title="Description" content={housingDetails.description}>
+                        </DropdownMenu> 
+                        <DropdownMenu title="Équipements" content={housingDetails.equipments.map((equip) => (
+                            <ul>
+                                <li>{equip}</li>
+                            </ul>
+                        ))}>
+                        </DropdownMenu>
+                    </div> 
+                </div>           
+            ) : null                
+            }
+        </div>
+
+            
     )
 }
 

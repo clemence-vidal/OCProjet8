@@ -24,6 +24,7 @@ root.render(
         <Route path="/about" element={<About />} />
         <Route path="/housing/:id" element={<Housing />} />
         <Route path="*" element={<Error />} />
+        <Route path="housing/*" element={<Error />} />
       </Routes>         
       <Footer /> 
        

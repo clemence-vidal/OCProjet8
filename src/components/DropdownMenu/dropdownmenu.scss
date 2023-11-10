@@ -26,7 +26,7 @@
         transition: transform 0.3s ease;
     }
     .chevron-icon.up {        
-        transform: rotate(-0.5turn)
+        transform: rotate(-180deg)
     }
       
 }
@@ -37,6 +37,12 @@
         justify-content: space-around;
         .dropdown-menu {
             width: 55%;
+        }
+        .content-collapsible {
+            font-size: 18px;
+        }
+        .chevron-icon {
+            transition: transform 0.3s ease;
         }
     }
 }

@@ -4,6 +4,7 @@ import Card from "../../components/Card/card";
 import { Link } from "react-router-dom";
 import "./home.scss";
 import { LogementsServices } from "../../services/logementsServices";
+import banner from "../../assets/banner-home.png";
 
 function Home() {
   const [housingList, setHousingList] = useState([]);
@@ -18,7 +19,7 @@ function Home() {
 
     return (
       <div>
-        <Banner />
+        <Banner imagePath={banner} showParagraph={true} />
         <div className="home-page">          
           {housingList.map((card) => (
             <Link to={{ pathname: `/housing/${card.id}`, state: { data: card } }} key={card.id}>

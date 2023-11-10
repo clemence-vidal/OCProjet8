@@ -6,31 +6,6 @@
     h1 {        
         font-size: 18px;
         margin: 10px 20px;
-    } 
-    .img-housing {        
-        width: auto;
-        height: 255px;
-        position: relative;
-        margin: 0 20px;
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            border-radius: 10px;
-        }
-        .chevron-left, .chevron-right {
-            position: absolute;
-            color: black; //white
-            font-size: 20px;
-            top: 115px;
-        }
-        .chevron-left {
-            left: 10px;
-        }
-        .chevron-right {
-            right: 10px;
-        }
     }
     .housing-content {
         p {
@@ -38,11 +13,13 @@
         }
         .filters {
             display: flex;
+            align-items: center;
             margin: 10px 0;   
             margin-left: 20px;      
-            & div {
+            .p-filters {
+            margin-left: 0; 
             font-size: 12px;
-            width: 80px;
+            padding: 3px;
             margin-right: 10px;
             border: 1px solid #FF6060;
             border-radius: 6px;
@@ -57,23 +34,28 @@
             align-content: stretch;
             flex-wrap: wrap;
             align-items: center;
-            & .rating {
+            .rating {
                 margin-left: 20px;
                 padding-top: 10px;
-                & svg {
+                svg {
                     margin-right: 5px;
+                    &.empty-stars {
+                        color: rgb(219, 219, 219);
+                    }
                 }
             }
-            & .name-and-picture {
+            .name-and-picture {
                 display: flex;
+                align-items: center;
                 margin-bottom: -10px;
-                & .picture {
-                width: 40px;
-                height: 40px;
-                border: 1px solid gray;
-                border-radius: 50px;
-                margin-right: 20px;
-                background-color: gray;
+                .picture {
+                    img {
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50px;
+                        margin-right: 20px;
+                    }
+                
                 } 
                 & p {
                     width: 100px;
@@ -83,31 +65,34 @@
             }
         }
     } 
+    .dropdown-housing {
+        li {
+            list-style: none;
+        }
+    }
 
 }
 
 @media (min-width: 768px) {
     .housing {
         margin: 0 60px;
-        .img-housing {
-            img {
-                height: 300px;
-            }
-            .chevron-left, .chevron-right {                
-                font-size: 60px;
-            }
-            .chevron-left {
-                left: 20px;
-            }
-            .chevron-right {
-                right: 20px;
-            }
-        }
         .housing-content { 
             margin-top: 70px;       
             h1 {
                 font-size: 36px;
                 margin-bottom: 0;
+            }
+            p {                
+                font-size: 18px;
+            }
+            .filters {
+                .p-filters {
+                    width: 115px;
+                    height: 25px;
+                    border-radius: 11px;
+                    font-size: 14px;
+                    padding-top: 2px;
+                }
             }
             .rating-and-name {               
                 justify-content: space-evenly;
@@ -137,6 +122,18 @@
         }
         .dropdown-housing {
             display: flex;
+            .dropdown-menu {
+                button {
+                    border-radius: 11px;
+                    font-size: 18px;
+                    padding-top: 12px;
+                    padding-bottom: 10px;
+                    svg {
+                        font-size: 25px;
+                        margin-right: 15px;
+                    }
+                }
+            }
         }
     }
 }

@@ -6,10 +6,8 @@ export class LogementsServices {
   }
 
   getLogementsById(id) {
-    console.log(id);
-    return fetch('datas/logements.json')
+    return fetch('/datas/logements.json')
       .then((response) => {
-        console.log();
         if (!response.ok) {
           console.log('erreur');
         }
@@ -19,7 +17,7 @@ export class LogementsServices {
         console.log(list);
         const logement = list.find((logement) => id === logement.id);
         if (!logement) {
-          console.log('existe pas');
+          window.location.href = '/error';
         }
         return logement;
       });
