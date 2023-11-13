@@ -1,3 +1,7 @@
+.home-page {
+    margin-bottom: 230px;
+}
+
 @media (min-width: 768px) {
     .home-page {
         width: auto;
@@ -6,7 +10,8 @@
         padding: 20px;
         display: flex;
         flex-wrap: wrap;
-        margin: 0 80px;
+        margin: 0 80px;        
+        margin-bottom: 260px;
         justify-content: space-evenly;
     }    
   }

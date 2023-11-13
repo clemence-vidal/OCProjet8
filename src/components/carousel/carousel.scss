@@ -19,6 +19,7 @@
         font-size: 20px;
         top: 115px;
         z-index: 99;
+        cursor: pointer;
     }
     .chevron-left {
         left: 10px;
@@ -26,18 +27,18 @@
     .chevron-right {
         right: 10px;
     }
-    // .image-carousel {
-    //     .image-number {      
-    //         position: absolute;
-    //         bottom: 10px;
-    //         right: 50%;
-    //         color: white;
-    //         z-index: 99;
-    //     }
-    //     .active .image-number {            
-    //         visibility: visible;
-    //     }
-    // }
+    .image-carousel {
+        .image-number {      
+            position: absolute;
+            bottom: 10px;
+            right: 50%;
+            color: white;
+            z-index: 99;
+        }
+        .active .image-number {            
+            visibility: visible;
+        }
+    }
 }
 
 @media (min-width: 768px) {
