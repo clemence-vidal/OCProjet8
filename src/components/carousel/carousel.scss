@@ -1,80 +1,84 @@
-.carousel {        
-    width: auto;
-    height: 255px;
-    position: relative;
-    margin: 0 20px;
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        position: absolute;
-        border-radius: 10px;
-        &.inactive {
-            display: none;
-        }
+.carousel {
+  width: auto;
+  height: 255px;
+  position: relative;
+  margin: 0 20px;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    border-radius: 10px;
+    &.inactive {
+      display: none;
     }
-    .chevron-left, .chevron-right {
-        position: absolute;
-        color: white;
-        font-size: 20px;
-        top: 115px;
-        z-index: 99;
-        cursor: pointer;
+  }
+  .chevron-left,
+  .chevron-right {
+    position: absolute;
+    color: white;
+    font-size: 20px;
+    top: 115px;
+    z-index: 99;
+    cursor: pointer;
+  }
+  .chevron-left {
+    left: 10px;
+  }
+  .chevron-right {
+    right: 10px;
+  }
+  .image-carousel {
+    .image-number {
+      display: none;
+      //   position: absolute;
+      //   bottom: 10px;
+      //   right: 50%;
+      //   color: white;
+      //   z-index: 99;
+      // }
+      // .active .image-number {
+      //   visibility: visible;
     }
-    .chevron-left {
-        left: 10px;
-    }
-    .chevron-right {
-        right: 10px;
-    }
-    .image-carousel {
-        .image-number {      
-            position: absolute;
-            bottom: 10px;
-            right: 50%;
-            color: white;
-            z-index: 99;
-        }
-        .active .image-number {            
-            visibility: visible;
-        }
-    }
+  }
 }
 
 @media (min-width: 768px) {
-    .carousel {
-        margin-bottom: 180px;
-        img {
-            height: 415px;  
-            border-radius: 30px;
-        }
-        .chevron-left, .chevron-right { 
-            top: 155px;               
-            font-size: 80px;
-        }
-        .chevron-left {
-            left: 20px;
-        }
-        .chevron-right {
-            right: 20px;
-        }
-        .image-carousel {
-            .image-number {    
-                font-size: 22px;
-                position: absolute;
-                bottom: -140px;
-                right: 50%;
-                color: white;
-                z-index: 99;
-            }
-            .active .image-number {            
-                visibility: visible;
-            }
-        }
-        // .image-carousel {
-        //     .image-number {  
-        //         bottom: -150px;
-        //     }
-        // }
+  .carousel {
+    margin-bottom: 180px;
+    img {
+      height: 415px;
+      border-radius: 30px;
     }
+    .chevron-left,
+    .chevron-right {
+      top: 155px;
+      font-size: 80px;
+    }
+    .chevron-left {
+      left: 20px;
+    }
+    .chevron-right {
+      right: 20px;
+    }
+    .image-carousel {
+      .image-number {
+        display: block;
+        font-size: 22px;
+        position: absolute;
+        bottom: -140px;
+        right: 50%;
+        color: white;
+        z-index: 99;
+      }
+      //   .active .image-number {
+      //     visibility: visible;
+      //   }
+    }
+    // .image-carousel {
+    //     .image-number {
+    //         bottom: -150px;
+    //     }
+    // }
+  }
 }

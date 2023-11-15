@@ -14,7 +14,6 @@ export class LogementsServices {
         return response.json();
       })
       .then((list) => {
-        console.log(list);
         const logement = list.find((logement) => id === logement.id);
         if (!logement) {
           window.location.href = '/error';
