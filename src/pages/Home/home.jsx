@@ -17,7 +17,7 @@ function Home() {
   }, []);
 
   return (
-    <div>
+    <div className="main-container">
       <Banner
         imagePath={banner}
         showParagraph="Chez vous, partout et ailleurs"

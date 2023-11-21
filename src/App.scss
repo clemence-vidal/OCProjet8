@@ -1,17 +1,21 @@
 * {
   margin: 0;
-  padding: 0;    
-  box-sizing: border-box;    
+  padding: 0;
+  box-sizing: border-box;
   object-fit: cover;
   font-family: Montserrat;
   line-height: 142.6%;
 }
 
-#root {    
+#root {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100vh;
+  min-height: 100vh;
+}
+
+.main-container {
+  flex: 1;
 }
 
 body {

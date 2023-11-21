@@ -3,7 +3,7 @@ import './housing.scss';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { LogementsServices } from '../../services/logementsServices';
-import Carousel from '../../components/carousel/carousel';
+import Carousel from '../../components/Carousel/carousel';
 import Error from '../Error/error';
 import Rating from '../../components/Rating/rating';
 import User from '../../components/User/user';
@@ -20,7 +20,7 @@ function Housing() {
   }, [id]);
 
   return (
-    <div className="housing">
+    <div className="housing main-container">
       {housingDetails ? (
         <div>
           <div className="img-housing">

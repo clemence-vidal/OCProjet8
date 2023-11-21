@@ -11,7 +11,6 @@ function Rating({ rating }) {
         className={i < rating ? '' : 'empty-stars'}
       />
     );
-    // console.log(rating);
   }
   return stars;
 }

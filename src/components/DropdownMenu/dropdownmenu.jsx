@@ -8,6 +8,7 @@ function DropdownMenu({ isList, content, title }) {
   const toggleCollapse = () => {
     setIsCollapsed(!isCollapsed);
   };
+
   function renderContent() {
     if (isList) {
       return (
